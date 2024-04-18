@@ -135,4 +135,13 @@ public class Animal {
         animals.remove(this);
 
     }
+
+    public int random(int count){
+        return ThreadLocalRandom.current().nextInt(count );
+    }
+
+    public boolean eatYesOrNot(int chance){
+        int random = ThreadLocalRandom.current().nextInt(101);
+        return random <= chance;
+    }
 }

@@ -1,6 +1,9 @@
 package wildIsland.animals.herbivore;
 
 import wildIsland.animals.herbivore.properties.HerbivoreProperties;
+import wildIsland.settings.AnimalDiet;
+
+@AnimalDiet(eatCaterpillar = 90, eatPlants = 100)
 
 public class Mouse extends HerbivoreProperties {
 

@@ -1,6 +1,10 @@
 package wildIsland.animals.predator;
 
 import wildIsland.animals.predator.properties.PredatorProperties;
+import wildIsland.settings.AnimalDiet;
+
+@AnimalDiet(eatHorse = 10, eatDeer = 15, eatRabbit = 60, eatMouse = 80, eatGoat = 60, eatSheep = 70,
+        eatBoar = 15, eatBuffalo = 10, eatDuck = 40)
 
 public class Wolf extends PredatorProperties {
 

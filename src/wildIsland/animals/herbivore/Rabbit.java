@@ -1,6 +1,9 @@
 package wildIsland.animals.herbivore;
 
 import wildIsland.animals.herbivore.properties.HerbivoreProperties;
+import wildIsland.settings.AnimalDiet;
+
+@AnimalDiet(eatPlants = 100)
 
 public class Rabbit extends HerbivoreProperties {
 
