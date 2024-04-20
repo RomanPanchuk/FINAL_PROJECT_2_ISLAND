@@ -181,4 +181,56 @@ public class IslandLocation {
         } else returnNumber = 0;
         return returnNumber;
     }
+
+    public void addHerbivoresToList() {
+        for (int i = 0; i < random(Settings.boarMaxCount); i++) {
+            herbivores.add(new Boar(x, y));
+        }
+        for (int i = 0; i < random(Settings.buffaloMaxCount); i++) {
+            herbivores.add(new Buffalo(x, y));
+        }
+        for (int i = 0; i < random(Settings.caterpillarMaxCount); i++) {
+            herbivores.add(new Caterpillar(x, y));
+        }
+        for (int i = 0; i < random(Settings.deerMaxCount); i++) {
+            herbivores.add(new Deer(x, y));
+        }
+        for (int i = 0; i < random(Settings.duckMaxCount); i++) {
+            herbivores.add(new Duck(x, y));
+        }
+        for (int i = 0; i < random(Settings.goatMaxCount); i++) {
+            herbivores.add(new Goat(x, y));
+        }
+        for (int i = 0; i < random(Settings.horseMaxCount); i++) {
+            herbivores.add(new Horse(x, y));
+        }
+        for (int i = 0; i < random(Settings.mouseMaxCount); i++) {
+            herbivores.add(new Mouse(x, y));
+        }
+        for (int i = 0; i < random(Settings.rabbitMaxCount); i++) {
+            herbivores.add(new Rabbit(x, y));
+        }
+        for (int i = 0; i < random(Settings.sheepMaxCount); i++) {
+            herbivores.add(new Sheep(x, y));
+        }
+    }
+
+    public void addPredatorsToList() {
+        for (int i = 0; i < random(Settings.boaMaxCount); i++) {
+            predators.add(new Boa(x, y));
+        }
+        for (int i = 0; i < random(Settings.bearMaxCount); i++) {
+            predators.add(new Bear(x, y));
+        }
+        for (int i = 0; i < random(Settings.eagleMaxCount); i++) {
+            predators.add(new Eagle(x, y));
+        }
+        for (int i = 0; i < random(Settings.foxMaxCount); i++) {
+            predators.add(new Fox(x, y));
+        }
+        for (int i = 0; i < random(Settings.wolfMaxCount); i++) {
+            predators.add(new Wolf(x, y));
+        }
+    }
+
 }

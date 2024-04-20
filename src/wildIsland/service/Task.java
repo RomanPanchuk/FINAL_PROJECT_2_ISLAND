@@ -1,3 +1,5 @@
+package wildIsland.service;
+
 import wildIsland.islandProperties.IslandLocation;
 import wildIsland.islandProperties.IslandProperties;
 
