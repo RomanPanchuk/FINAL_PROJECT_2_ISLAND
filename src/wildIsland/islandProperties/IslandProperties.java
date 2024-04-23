@@ -11,6 +11,11 @@ public class IslandProperties {
     public static int islandLength = Settings.islandLength;
     public static int islandWidth = Settings.islandWidth;
 
+    private final Lock lock = new ReentrantLock(true);
+    public Lock getLock() {
+        return lock;
+    }
+
     public static IslandLocation[][] locations = new IslandLocation[islandLength][islandWidth];
 
     public IslandLocation[][] getLocations() {
