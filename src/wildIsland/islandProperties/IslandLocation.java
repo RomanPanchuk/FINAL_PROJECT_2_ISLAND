@@ -13,10 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class IslandLocation {
     private final int x;
     private final int y;
+
+    private final Lock lock = new ReentrantLock(true);
+
+    public Lock getLock() {
+        return lock;
+    }
 
     private final List<HerbivoreProperties> herbivores = new ArrayList<>();
     private final List<PredatorProperties> predators = new ArrayList<>();

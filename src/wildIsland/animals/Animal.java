@@ -25,18 +25,21 @@ public class Animal {
     }
 
     public void move(IslandLocation islandLocation, IslandLocation[][] locations) {
-
-        int[] newCoordinates = this.getNewCoordinates();
-        if (isLocationFree(islandLocation)) {
-            locations[newCoordinates[0]][newCoordinates[1]].addAnimal(this);
-            if (this instanceof PredatorProperties) {
-                islandLocation.getPredators().remove(this);
-            }
-            if (this instanceof HerbivoreProperties) {
-                islandLocation.getHerbivores().remove(this);
-            }
-        } else move(islandLocation, locations);
-
+        islandLocation.getLock().lock();
+        try {
+            int[] newCoordinates = this.getNewCoordinates();
+            if (isLocationFree(islandLocation)) {
+                locations[newCoordinates[0]][newCoordinates[1]].addAnimal(this);
+                if (this instanceof PredatorProperties) {
+                    islandLocation.getPredators().remove(this);
+                }
+                if (this instanceof HerbivoreProperties) {
+                    islandLocation.getHerbivores().remove(this);
+                }
+            } else move(islandLocation, locations);
+        } finally {
+            islandLocation.getLock().unlock();
+        }
     }
 
     private boolean isLocationFree(IslandLocation islandLocation) {
@@ -131,16 +134,19 @@ public class Animal {
     }
 
     public void toDie(List<? extends Animal> animals, IslandLocation islandLocation) {
-
-        animals.remove(this);
-
+        islandLocation.getLock().lock();
+        try {
+            animals.remove(this);
+        } finally {
+            islandLocation.getLock().unlock();
+        }
     }
 
-    public int random(int count){
-        return ThreadLocalRandom.current().nextInt(count );
+    public int random(int count) {
+        return ThreadLocalRandom.current().nextInt(count);
     }
 
-    public boolean eatYesOrNot(int chance){
+    public boolean eatYesOrNot(int chance) {
         int random = ThreadLocalRandom.current().nextInt(101);
         return random <= chance;
     }
