@@ -15,7 +15,7 @@ public class Run {
     private static ScheduledExecutorService executorCultivationPlants;
     private static ScheduledExecutorService executorAnimalStatistics;
 
-    public static void run() {
+    public void run() {
         IslandProperties islandProperties = new IslandProperties();
         islandProperties.initialize();
         AnimalStatistics stat = new AnimalStatistics(islandProperties);

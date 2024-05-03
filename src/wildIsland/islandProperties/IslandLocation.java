@@ -15,6 +15,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.IntStream;
 
 public class IslandLocation {
     private final int x;
@@ -160,81 +161,52 @@ public class IslandLocation {
     public void startReproduct() {
         this.getLock().lock();
         try {
-            for (int i = 0; i < randomReproductCount(Settings.boarMaxCount / Settings.boarBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Boar).toList().size() > 2) {
-                    herbivores.add(new Boar(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.buffaloMaxCount / Settings.buffaloBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Buffalo).toList().size() > 2) {
-                    herbivores.add(new Buffalo(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.caterpillarMaxCount / Settings.caterpillarBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Caterpillar).toList().size() > 2) {
-                    herbivores.add(new Caterpillar(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.deerMaxCount / Settings.deerBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Deer).toList().size() > 2) {
-                    herbivores.add(new Deer(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.duckMaxCount / Settings.duckBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Duck).toList().size() > 2) {
-                    herbivores.add(new Duck(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.goatMaxCount / Settings.goatBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Goat).toList().size() > 2) {
-                    herbivores.add(new Goat(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.horseMaxCount / Settings.horseBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Horse).toList().size() > 2) {
-                    herbivores.add(new Horse(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.mouseMaxCount / Settings.mouseBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Mouse).toList().size() > 2) {
-                    herbivores.add(new Mouse(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.rabbitMaxCount / Settings.rabbitBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Rabbit).toList().size() > 2) {
-                    herbivores.add(new Rabbit(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.sheepMaxCount / Settings.sheepBirthRate); i++) {
-                if (herbivores.stream().filter(animal -> animal instanceof Sheep).toList().size() > 2) {
-                    herbivores.add(new Sheep(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.boaMaxCount / Settings.boeBirthRate); i++) {
-                if (predators.stream().filter(animal -> animal instanceof Boa).toList().size() > 2) {
-                    predators.add(new Boa(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.bearMaxCount / Settings.bearBirthRate); i++) {
-                if (predators.stream().filter(animal -> animal instanceof Bear).toList().size() > 2) {
-                    predators.add(new Bear(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.eagleMaxCount / Settings.eagleBirthRate); i++) {
-                if (predators.stream().filter(animal -> animal instanceof Eagle).toList().size() > 2) {
-                    predators.add(new Eagle(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.foxMaxCount / Settings.foxBirthRate); i++) {
-                if (predators.stream().filter(animal -> animal instanceof Fox).toList().size() > 2) {
-                    predators.add(new Fox(x, y));
-                }
-            }
-            for (int i = 0; i < randomReproductCount(Settings.wolfMaxCount / Settings.wolfBirthRate); i++) {
-                if (predators.stream().filter(animal -> animal instanceof Wolf).toList().size() > 2) {
-                    predators.add(new Wolf(x, y));
-                }
-            }
+            IntStream.range(0, randomReproductCount(Settings.boarMaxCount / Settings.boarBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Boar).count() > 2)
+                    .forEach(i -> herbivores.add(new Boar(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.buffaloMaxCount / Settings.buffaloBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Buffalo).count() > 2)
+                    .forEach(i -> herbivores.add(new Buffalo(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.caterpillarMaxCount / Settings.caterpillarBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Caterpillar).count() > 2)
+                    .forEach(i -> herbivores.add(new Caterpillar(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.deerMaxCount / Settings.deerBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Deer).count() > 2)
+                    .forEach(i -> herbivores.add(new Deer(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.duckMaxCount / Settings.duckBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Duck).count() > 2)
+                    .forEach(i -> herbivores.add(new Duck(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.goatMaxCount / Settings.goatBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Goat).count() > 2)
+                    .forEach(i -> herbivores.add(new Goat(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.horseMaxCount / Settings.horseBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Horse).count() > 2)
+                    .forEach(i -> herbivores.add(new Horse(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.mouseMaxCount / Settings.mouseBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Mouse).count() > 2)
+                    .forEach(i -> herbivores.add(new Mouse(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.rabbitMaxCount / Settings.rabbitBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Rabbit).count() > 2)
+                    .forEach(i -> herbivores.add(new Rabbit(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.sheepMaxCount / Settings.sheepBirthRate))
+                    .filter(i -> herbivores.stream().filter(animal -> animal instanceof Sheep).count() > 2)
+                    .forEach(i -> herbivores.add(new Sheep(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.boaMaxCount / Settings.boeBirthRate))
+                    .filter(i -> predators.stream().filter(animal -> animal instanceof Boa).count() > 2)
+                    .forEach(i -> predators.add(new Boa(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.bearMaxCount / Settings.bearBirthRate))
+                    .filter(i -> predators.stream().filter(animal -> animal instanceof Bear).count() > 2)
+                    .forEach(i -> predators.add(new Bear(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.eagleMaxCount / Settings.eagleBirthRate))
+                    .filter(i -> predators.stream().filter(animal -> animal instanceof Eagle).count() > 2)
+                    .forEach(i -> predators.add(new Eagle(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.foxMaxCount / Settings.foxBirthRate))
+                    .filter(i -> predators.stream().filter(animal -> animal instanceof Fox).count() > 2)
+                    .forEach(i -> predators.add(new Fox(x, y)));
+            IntStream.range(0, randomReproductCount(Settings.wolfMaxCount / Settings.wolfBirthRate))
+                    .filter(i -> predators.stream().filter(animal -> animal instanceof Wolf).count() > 2)
+                    .forEach(i -> predators.add(new Wolf(x, y)));
+
         } finally {
             this.getLock().unlock();
         }

@@ -157,7 +157,6 @@ public abstract class HerbivoreProperties extends Animal {
     public void eatPlant(List<Plant> plants, IslandLocation location) {
         location.getLock().lock();
         try {
-//            if (plants.size() > 200) {
             if (plants.size() > Plant.maxCount) {
                 if (this instanceof Boar) {
                     double hunger = ((Boar) this).getHunger();
@@ -171,7 +170,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Buffalo) this).getHunger();
                     while (hunger < Buffalo.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Buffalo) this).setHunger(hunger);
                 }
@@ -179,7 +180,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Caterpillar) this).getHunger();
                     while (hunger < Caterpillar.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Caterpillar) this).setHunger(hunger);
                 }
@@ -187,7 +190,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Deer) this).getHunger();
                     while (hunger < Deer.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Deer) this).setHunger(hunger);
                 }
@@ -195,7 +200,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Duck) this).getHunger();
                     while (hunger < Duck.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Duck) this).setHunger(hunger);
                 }
@@ -203,7 +210,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Goat) this).getHunger();
                     while (hunger < Goat.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Goat) this).setHunger(hunger);
                 }
@@ -211,7 +220,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Horse) this).getHunger();
                     while (hunger < Horse.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Horse) this).setHunger(hunger);
                 }
@@ -219,7 +230,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Mouse) this).getHunger();
                     while (hunger < Mouse.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Mouse) this).setHunger(hunger);
                 }
@@ -227,7 +240,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Rabbit) this).getHunger();
                     while (hunger < Rabbit.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Rabbit) this).setHunger(hunger);
                 }
@@ -235,7 +250,9 @@ public abstract class HerbivoreProperties extends Animal {
                     double hunger = ((Sheep) this).getHunger();
                     while (hunger < Sheep.canEat) {
                         hunger++;
-                        plants.remove(0);
+                        while (plants.size() > 0) {
+                            plants.remove(0);
+                        }
                     }
                     ((Sheep) this).setHunger(hunger);
                 }
