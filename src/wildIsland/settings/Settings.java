@@ -2,8 +2,11 @@ package wildIsland.settings;
 
 public class Settings {
     // island dimensions
-    public static int islandWidth = 20;
-    public static int islandLength = 100;
+//    public static int islandWidth = 20;
+//    public static int islandLength = 100;
+
+    public static int islandWidth = 5;
+    public static int islandLength = 10;
 
     //Hunger factor: the higher the number, the longer the animal lives
     public static int predatorHungerFactor = 6;
